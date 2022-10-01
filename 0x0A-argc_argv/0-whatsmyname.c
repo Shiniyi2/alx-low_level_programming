@@ -7,7 +7,7 @@
  * Return: 0 for success
  * /
  * 
-int main(int argc_attribute_((unused)), char *agrv[])
+int main(int argc__attribute__((unused)), char *agrv[])
 {
     printf("%s\n", *argv);
     return 0;
