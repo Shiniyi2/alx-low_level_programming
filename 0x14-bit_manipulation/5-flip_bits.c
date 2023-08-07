@@ -10,13 +10,16 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-        int i, count = 0;
-        unsigned long int current;
-        unsigned long int exclusive = n ^ m;
+    int i, count = 0;
+    unsigned long int current;
+    unsigned long int exclusive = n ^ m;
 
-        for (i = 63; i >= 0; i--)
-        {
-                current = exclusive >> i;
-                if (current & 1)
-                        count++;
-        }
+    for (i = 0; i < 64; i++)  // Change loop condition and loop count
+    {
+        current = exclusive >> i;
+        if (current & 1)
+            count++;
+    }
+
+    return count;  // Added the return statement
+}
