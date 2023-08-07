@@ -9,18 +9,14 @@
  *
  * Return: number of bits to change
  */
-unsigned int flip_bits(unsigned long int n, unsigned long int m)
-{
-    int i, count = 0;
-    unsigned long int current;
-    unsigned long int exclusive = n ^ m;
+#include <stdio.h>
 
-    for (i = 0; i < 64; i++)  // Change loop condition and loop count
-    {
-        current = exclusive >> i;
-        if (current & 1)
-            count++;
-    }
-
-    return count;  // Added the return statement
+unsigned int flip_bits(unsigned long int n, unsigned long int m) {
+	unsigned long int xor_result = n ^ m;
+	unsigned int count = 0;
+	while (xor_result > 0) {
+		count += xor_result & 1;  // Check the least significant bit
+		xor_result >>= 1;         // Right-shift to check the next bit
+	}
+	return count;
 }
